@@ -3,14 +3,13 @@
         <title>Create Place</title>
     </head>
     <body>
-        <p>Thing here!</p>
-        {% if newplace is not empty %}
-        {% for place in newplace %}
-          <p>{{ place.getCity }}</p>
-          <p>{{ place.getTripDuration }}</p>
-          <p>{{ place.getImagePath }}</p>
-          {% endfor %}
-          {% endif %}
+        <h2>Awesome Trip!</h2>
+        <div>
+          <p>{{ newplace.getCity }}</p>
+          <p>{{ newplace.getTripDuration }}</p>
+          <p>{{ newplace.getImagePath }}</p>
+
           <p><a href='/'>Back home!</a></p>
+      </div>
     </body>
 </html>

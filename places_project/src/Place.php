@@ -45,7 +45,6 @@
 
         function save()
         {
-            echo $this->city . " " . $this->trip_duration . " " . $this->image_path;
             array_push($_SESSION['place_entries'], $this);
         }
 
