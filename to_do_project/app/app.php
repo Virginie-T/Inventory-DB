@@ -19,18 +19,14 @@
     });
 
     //create & display task
-    $app->post("/tasks", function() {
+    $app->post("/tasks", function() use ($app) {
         $task = new Task($_POST['description']);
         $task->save();
-        return "
-                <h1>Nice job, You created a task!</h1>
-                <p>" . $task->getDescription() . "</p>
-                <p><a href='/'>View your list of things to do.</a></p>
-                ";
+        return $app['twig']->render('create_task.php', array('tasks' => $task));
     });
 
     //delete
-    $app->post("/delete_tasks", function() {
+    $app->post("/delete_tasks", function() use ($app) {
         Task::deleteAll();
 
         return "<h1>List cleared!</h1>
