@@ -1,0 +1,26 @@
+img {
+    max-width: 200px;
+}
+
+h1,
+h2 {
+    color: salmon;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+body {
+    background-color: yellow;
+}
+
+.form-group {
+    border: groove;
+    padding: 5px;
+}
+
+.jumbotron {
+    color: yellow;
+    background-image: url('http://muchneededvacations.com/wp-content/uploads/2014/07/Hawaii-3.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
