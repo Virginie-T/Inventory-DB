@@ -5,13 +5,14 @@
         <title>Create Place</title>
     </head>
     <body>
-        <h2>Awesome Trip!</h2>
-        <div>
-          <p>{{ newplace.getCity }}</p>
-          <p>{{ newplace.getTripDuration }}</p>
-          <p><img src='{{ newplace.getImagePath }}'></p>
-
-          <p><a href='/'>Back home!</a></p>
-      </div>
+        <div class='container'>
+            <h2>Awesome Trip!</h2>
+            <div>
+              <p>{{ newplace.getCity }}</p>
+              <p>{{ newplace.getTripDuration }}</p>
+              <p><img src='{{ newplace.getImagePath }}'></p>
+              <p><a href='/'>Back home!</a></p>
+            </div>
+        </div>
     </body>
 </html>
