@@ -4,12 +4,24 @@
     {
       private $description;
       private $id;
+      private $category_id;
 
-//setting the id to null
-      function __construct($description, $id = null)
+//giving the id a default value of null
+      function __construct($description, $id = null, $category_id)
       {
         $this->description = $description;
         $this->id = $id;
+        $this->category_id = $category_id
+      }
+
+      function setCategory($new_category_id)
+      {
+          $this->category_id = (int) $new_category_id;
+      }
+
+      function getCategory()
+      {
+          return this->category_id;
       }
 
       function getId()
@@ -35,7 +47,7 @@
 //create new item into the database and return its id key
       function save()
       {
-          $statement = $GLOBALS['DB']->query("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}') RETURNING id;");
+          $statement = $GLOBALS['DB']->query("INSERT INTO tasks (description, category_id) VALUES ('{$this->getDescription()}', {$this->getCategoryId()}) RETURNING id;");
     $result = $statement->fetch(PDO::FETCH_ASSOC);
     $this->setId($result['id']);
       }
@@ -49,7 +61,7 @@
       foreach($returned_tasks as $task) {
           $description = $task['description'];
           $id = $task['id'];
-          $new_task = new Task($description, $id);
+          $new_task = new Task($description, $id, $category_id);
           array_push($tasks, $new_task);
         }
         return $tasks;
