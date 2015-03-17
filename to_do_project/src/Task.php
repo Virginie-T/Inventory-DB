@@ -5,6 +5,7 @@
       private $description;
       private $id;
 
+//setting the id to null
       function __construct($description, $id = null)
       {
         $this->description = $description;
@@ -31,7 +32,7 @@
         return $this->description;
       }
 
-
+//create new item into the database and return his id key
       function save()
       {
           $statement = $GLOBALS['DB']->query("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}') RETURNING id;");
@@ -39,6 +40,7 @@
     $this->setId($result['id']);
       }
 
+//get all the data from the database (description and id).
       static function getAll()
       {
 
@@ -53,13 +55,13 @@
         return $tasks;
         }
 
-
+//delete all the data in the tasks table
       static function deleteAll()
       {
           $GLOBALS['DB']->exec("DELETE FROM tasks *;");
       }
 
-
+//search by matching id
       static function find($search_id)
          {
              $found_task = null;

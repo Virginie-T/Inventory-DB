@@ -4,6 +4,8 @@
 
     $app = new Silex\Application();
 
+
+//create our database, link with pgsql
     $DB = new PDO('pgsql:host=localhost;dbname=to_do');
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(

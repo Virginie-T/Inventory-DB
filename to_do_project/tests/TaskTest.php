@@ -7,11 +7,14 @@
 
     require_once "src/Task.php";
 
+//create our database, link with pgsql
     $DB = new PDO('pgsql:host=localhost;dbname=to_do_test');
 
 
     class TaskTest extends PHPUnit_Framework_TestCase
     {
+
+        //deletes the values so that our database doesnt have duplicates.
             protected function tearDown()
            {
                Task::deleteAll();
@@ -32,7 +35,7 @@
         }
 
         function test_getAll()
-{
+        {
             //Arrange
             $description = "Wash the dog";
             $description2 = "Water the lawn";
@@ -46,8 +49,9 @@
 
             //Assert
             $this->assertEquals([$test_Task, $test_Task2], $result);
-}
+        }
 
+//
             function test_deleteAll()
             {
                 //Arrange
@@ -66,6 +70,7 @@
                 $this->assertEquals([], $result);
             }
 
+//returns the primary serial key (testing if it return it)
             function test_getId()
             {
                 //Arrange
@@ -80,6 +85,7 @@
                 $this->assertEquals(1, $result);
             }
 
+//testing if it set the id
             function test_setId()
             {
                 //Arrange
@@ -95,6 +101,7 @@
                 $this->assertEquals(2, $result);
             }
 
+//testing ig we can find the description with the id
             function test_find()
                     {
                   //Arrange
@@ -112,7 +119,7 @@
                   //Assert
                   $this->assertEquals($test_Task, $result);
                     }
-            
+
 
 
 
