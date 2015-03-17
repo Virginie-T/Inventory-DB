@@ -29,7 +29,7 @@
             $test_category = new Category($name, $id);
             $test_category->save();
 
-            $description = "Wash the dog";
+            $description = "mow lawn";
             $category_id = $test_category->getId();
             $test_task = new Task($description, $id, $category_id);
 

@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Task.php";
+    require_once __DIR__."/../src/Category.php";
 
     $app = new Silex\Application();
 
@@ -24,7 +25,7 @@
 
     $app->get('/categories/{id}', function($id) use ($app) {
         $category = Category::find($id);
-        return $app['twig']->render('tasks.html.twig', array('category' => $category, 'tasks' => $category->getTasks()));
+        return $app['twig']->render('tasks.twig', array('category' => $category, 'tasks' => $category->getTasks()));
 
     });
 
