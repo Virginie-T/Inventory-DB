@@ -32,7 +32,7 @@
         return $this->description;
       }
 
-//create new item into the database and return his id key
+//create new item into the database and return its id key
       function save()
       {
           $statement = $GLOBALS['DB']->query("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}') RETURNING id;");

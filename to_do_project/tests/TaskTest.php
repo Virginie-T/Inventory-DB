@@ -6,6 +6,7 @@
     */
 
     require_once "src/Task.php";
+    require_once "src/Category.php";
 
 //create our database, link with pgsql
     $DB = new PDO('pgsql:host=localhost;dbname=to_do_test');
@@ -51,7 +52,7 @@
             $this->assertEquals([$test_Task, $test_Task2], $result);
         }
 
-//
+
             function test_deleteAll()
             {
                 //Arrange
@@ -74,15 +75,43 @@
             function test_getId()
             {
                 //Arrange
+                $name = "Home stuff"
+                $id = null;
+                $test_category = new Category($name, $id);
+                $test_category->save();
+
                 $description = "Wash the dog";
-                $id = 1;
-                $test_Task = new Task($description, $id);
+                $category_id = $test_category->getId();
+                $test_Task = new Task($description, $id, $category_id);
+                $test_task->save();
 
                 //Act
                 $result = $test_Task->getId();
 
                 //Assert
-                $this->assertEquals(1, $result);
+                $this->assertEquals(true, is_numeric($result));
+            }
+
+
+            function test_getCategory()
+            {
+
+                //arrange
+                $name = "Home stuff";
+                $id = null;
+                $test_category = new Category($name, $id);
+                $test_category->save();
+
+                $decsription = "Wash the dog";
+                $category_id = $test_category->getId();
+                $test_task = new Task($description, $id, $category_id);
+                $test_task->save();
+
+                //act
+                $result = $test_task->getCategoryId();
+
+                //assert
+                $this->assertEquals(true, is_numeric($result));
             }
 
 //testing if it set the id
