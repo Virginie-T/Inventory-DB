@@ -17,6 +17,7 @@
         protected function tearDown()
         {
           Category::deleteAll();
+          Task::deleteAll();
         }
 
         function test_getTasks()
@@ -43,7 +44,7 @@
             //Assert
             $this->assertEquals([$test_task, $test_task2], $result);
 
-            
+
 
         }
         function test_getName()
